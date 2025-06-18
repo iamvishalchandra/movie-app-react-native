@@ -4,6 +4,10 @@ export default function Index() {
   return (
     <View className="items-center justify-center flex-1">
       <Text className="text-2xl text-primary">Hello Androids World!</Text>
+      {/* <Link href="/onboarding">onboarding</Link>
+      <Link href={{ pathname: "/movie/[id]", params: { id: "batman" } }}>
+        Batman
+      </Link> */}
     </View>
   );
 }
