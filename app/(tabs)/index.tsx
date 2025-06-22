@@ -5,7 +5,6 @@ import { images } from "@/constants/images";
 import { fetchMovies } from "@/service/api";
 import useFetch from "@/service/useFetch";
 import { useRouter } from "expo-router";
-import { useState } from "react";
 import {
   ActivityIndicator,
   FlatList,
@@ -16,14 +15,14 @@ import {
 } from "react-native";
 
 export default function Index() {
-  const [query, setQuery] = useState("");
+  // const [query, setQuery] = useState("");
   const router = useRouter();
 
   const {
     data: movies,
     loading,
     error,
-  } = useFetch(() => fetchMovies({ query }));
+  } = useFetch(() => fetchMovies({ query: "" }));
 
   return (
     <View className="flex-1 bg-primary">
@@ -46,9 +45,9 @@ export default function Index() {
           <View className="flex-1 mt-5">
             <SearchBar
               placeholder="Search"
-              // onPress={() => router.push("/search")}
-              value={query}
-              setValue={setQuery}
+              onPress={() => router.push("/search")}
+              // value={query}
+              // setValue={setQuery}
             />
             <>
               <Text className="mt-3 mb-5 text-lg font-bold text-white">
