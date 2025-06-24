@@ -6,7 +6,7 @@ interface ISearchBar {
   placeholder: string;
   onPress?: () => void;
   value?: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
+  setValue?: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const SearchBar = ({ placeholder, onPress, value, setValue }: ISearchBar) => {
@@ -22,7 +22,7 @@ const SearchBar = ({ placeholder, onPress, value, setValue }: ISearchBar) => {
         onPress={onPress}
         placeholder={placeholder}
         value={value}
-        onChangeText={(e) => setValue(e)}
+        onChangeText={(e) => setValue && setValue(e)}
         placeholderTextColor="#a8b5db"
         className="flex-1 ml-2 text-white"
       />

@@ -8,7 +8,7 @@ const TabIcon = ({ focused, icon, title }: any) =>
   focused ? (
     <ImageBackground
       source={images.highlight}
-      className="flex flex-row flex-1 w-full min-w-[112px] min-h-14 mt-[10px] justify-center items-center rounded-full overflow-hidden"
+      className="flex flex-row flex-1 w-full min-w-[112px] min-h-16 mt-4 justify-center items-center rounded-full overflow-hidden"
     >
       <Image source={icon} tintColor="#151312" className="size-5" />
       <Text className="ml-2 text-base font-semibold text-secondary">
@@ -23,8 +23,8 @@ const TabIcon = ({ focused, icon, title }: any) =>
 
 const _layout = () => {
   const tabs = [
-    { id: "search", title: "Search", headerShown: false, icon: icons.search },
     { id: "index", title: "Home", headerShown: false, icon: icons.home },
+    { id: "search", title: "Search", headerShown: false, icon: icons.search },
     { id: "saved", title: "Saved", headerShown: false, icon: icons.save },
     {
       id: "profile",

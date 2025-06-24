@@ -3,6 +3,7 @@ import SearchBar from "@/component/SearchBar";
 import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
 import { fetchMovies } from "@/service/api";
+import { updateSearchCount } from "@/service/appwrite";
 import useFetch from "@/service/useFetch";
 import { useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
@@ -33,6 +34,11 @@ const search = () => {
     }, 500);
     return () => clearTimeout(debounce);
   }, [query]);
+
+  useEffect(() => {
+    if (movies && movies?.length > 0 && movies?.[0])
+      updateSearchCount(query, movies[0]);
+  }, [movies]);
 
   const searchMovies = async () => {
     if (query.trim()) {
@@ -86,11 +92,15 @@ const search = () => {
                 Error: {error.message}
               </Text>
             )}
-            {!loading && !error && query.trim() && movies?.length > 0 && (
-              <Text className="text-xl font-bold text-white">
-                Search Result For <Text className="text-accent">{query}</Text>
-              </Text>
-            )}
+            {!loading &&
+              !error &&
+              query.trim() &&
+              movies &&
+              movies?.length > 0 && (
+                <Text className="text-xl font-bold text-white">
+                  Search Result For <Text className="text-accent">{query}</Text>
+                </Text>
+              )}
           </>
         }
         ListEmptyComponent={
